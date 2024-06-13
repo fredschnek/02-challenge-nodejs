@@ -3,9 +3,9 @@ import type { Knex } from 'knex'
 export async function up(knex: Knex): Promise<void> {
   await knex.schema.createTable('users', (table) => {
     table.uuid('id').primary()
-    table.string('session_id').unique().notNullable()
+    table.string('session_id').notNullable().unique()
     table.string('name').notNullable()
-    table.string('email').unique().notNullable()
+    table.string('email').notNullable().unique()
     table.timestamps(true, true) // Adds created_at and updated_at columns
   })
 }
